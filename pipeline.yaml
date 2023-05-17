@@ -4,9 +4,9 @@ trigger:
       - main
 
 variables:
-  imageName: 'your-docker-hub-username/todo-app'
+  imageName: 'dockerwave21/todo_app'
   imageVersion: $(version) 
-  DOCKERHUB_PASSWORD: $(DOCKERHUB_PASSWORD)
+  DOCKERHUB_TOKEN: $(DOCKERHUB_TOKEN)
 
 jobs:
 # - job: BuildAndTest
@@ -34,4 +34,7 @@ jobs:
       containerRegistry: 'DockerHub'
       repository: '$(imageName)'
       tags: '$(imageVersion)'
-      containerRegistryPassword: $(DOCKERHUB_PASSWORD)
+      containerRegistryType: 'Container Registry'
+      dockerRegistryEndpoint: 'DockerHub'
+      arguments: '--build-arg DOCKERHUB_TOKEN=$(DOCKERHUB_TOKEN)'
+
