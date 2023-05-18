@@ -4,7 +4,7 @@ import { API_URL } from './env';
 
 function App() {
 
-  console.log(API_URL);
+  console.log(process.env.REACT_APP_FLASK_APP_API_URL);
   
   const [todos, setTodos] = useState([]);
   const [newTodo, setNewTodo] = useState('');
