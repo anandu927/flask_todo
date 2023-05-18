@@ -1,0 +1,17 @@
+name: Push to deployment
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  push:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy Frontend
+        run: curl ${{ secrets.DEPLOYMENT_FRONTEND }}
+      
+      - name: Deploy Backend
+        run: curl ${{ secrets.DEPLOYMENT_BACKEND }}
