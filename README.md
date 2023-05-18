@@ -1,6 +1,6 @@
 # Todo App
 
-The Todo App is a simple web application built with Flask, which allows users to create and manage a list of todo items. This README provides an overview of the Todo App, its features, and its architecture.
+The Todo App is a simple web application built with React & Flask, which allows users to create and manage a list of todo items. This README provides an overview of the Todo App, its features, and its architecture.
 
 ## Features
 
