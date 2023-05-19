@@ -16,14 +16,19 @@ jobs:
         run: |
           zip -r my-artifact.zip todo-app-backend
           
+          
+      - name: Get Commit SHA
+        id: commit_sha
+        run: echo "::set-output name=sha::$(git rev-parse --short=7 HEAD)"
+          
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
         with:
-          tag_name: ${{ github.sha[0,7] }}
-          release_name: Release ${{ github.sha[0,7] }}
+          tag_name: ${{ steps.commit_sha.outputs.sha }}
+          release_name: Release ${{ steps.commit_sha.outputs.sha }}
           draft: false
           prerelease: false
       - name: Upload Release Asset
