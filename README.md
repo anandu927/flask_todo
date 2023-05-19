@@ -16,6 +16,12 @@ The Todo App follows a client-server architecture, with the following components
 
 2. **Server-side**: The server-side component is built with the Flask framework, a lightweight web framework written in Python. It handles HTTP requests and responses, data processing, and interacts with list data structure to store and retrieve todo items. The server-side code includes the Flask application logic, routing, and database operations.
 
+
+Live Server :
+
+React Forented : https://todo-frontend-djew.onrender.com
+Flask Backed   : https://todo-backend-o2ar.onrender.com
+
 ## Getting Started
 
 To run the Todo App locally, follow these steps:
