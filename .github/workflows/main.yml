@@ -31,6 +31,8 @@ jobs:
           git commit -m "Exclude folder"
           git tag -a v1.0.0 -m "Version 1.0.0"
           git push --tags
+        env:
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
           
 #       - name: Checkout code
 #         uses: actions/checkout@v2
