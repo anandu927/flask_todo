@@ -13,22 +13,39 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
         with:
-          path: '!todo-app-frontend'
+          fetch-depth: 0  # Fetch all history to enable tag creation
+
+      - name: Initialize Git
+        run: |
+          git init
+          git config user.name "Your Name"
+          git config user.email "youremail@example.com"
+
+      - name: Exclude Folder
+        run: |
+          rm -rf todo-app-frontend/  
+
+      - name: Create Tag
+        run: |
+          git add -A
+          git commit -m "Exclude folder"
+          git tag -a v1.0.0 -m "Version 1.0.0"
+          git push --tags
+          
+#       - name: Checkout code
+#         uses: actions/checkout@v2
+#         with:
+#           path: '!todo-app-frontend'
           
 #       - name: Build project 
 #         run: |
 #           zip -r todo-app-backend.zip todo-app-backend
           
           
-      - name: Get Commit SHA
-        id: commit_sha
-        run: echo "::set-output name=sha::$(git rev-parse --short=7 HEAD)"
+#       - name: Get Commit SHA
+#         id: commit_sha
+#         run: echo "::set-output name=sha::$(git rev-parse --short=7 HEAD)"
         
-
-      - name: Create Tag
-        run: |
-          git tag -a v1.0.0 -m "Version 1.0.0"
-          git push --tags
 #       - name: Create Release
 #         id: create_release
 #         uses: actions/create-release@v1
