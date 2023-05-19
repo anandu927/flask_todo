@@ -21,12 +21,16 @@ jobs:
         id: commit_sha
         run: echo "::set-output name=sha::$(git rev-parse --short=7 HEAD)"
         
-      - name: Create release tag
+      - name: Exclude Folder
+        run: |
+          git config --local --add sparse-checkout true
+          echo "todo-app-frontend/" >> .git/info/sparse-checkout
+          git read-tree -mu HEAD
+
+      - name: Create Tag
         run: |
           git tag -a v1.0.0 -m "Version 1.0.0"
-          git push --follow-tags
-        env:
-          GIT_TAG_EXCLUDES: todo-app-frontend/
+          git push --tags
 #       - name: Create Release
 #         id: create_release
 #         uses: actions/create-release@v1
