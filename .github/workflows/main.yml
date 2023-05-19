@@ -30,7 +30,7 @@ jobs:
           git add -A
           git commit -m "Exclude folder"
           git tag -a v1.0.0 -m "Version 1.0.0"
-          git push --tags
+          git push --tags https://anandu927:${{ secrets.TOKEN }}@github.com/todo_app.git
           git push https://anandu927:${{ secrets.TOKEN }}@github.com/todo_app.git
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
