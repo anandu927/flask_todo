@@ -18,8 +18,8 @@ jobs:
       - name: Initialize Git
         run: |
           git init
-          git config user.name "${{ secrets.NAME }}"
-          git config user.email "${{ secrets.EMAIL }}"
+          git config user.name ${{ secrets.NAME }}
+          git config user.email ${{ secrets.EMAIL }}
 
       - name: Exclude Folder
         run: |
@@ -27,8 +27,8 @@ jobs:
 
       - name: Create Tag
         run: |
-          git config user.name "${{ secrets.NAME }}"
-          git config user.email "${{ secrets.EMAIL }}"
+          git config user.name ${{ secrets.NAME }}
+          git config user.email ${{ secrets.EMAIL }}
           git add -A
           git commit -m "Exclude folder"
           git tag -a v1.0.0 -m "Version 1.0.0"
