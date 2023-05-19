@@ -15,9 +15,9 @@ jobs:
         with:
           path: '!todo-app-frontend'
           
-      - name: Build project 
-        run: |
-          zip -r todo-app-backend.zip todo-app-backend
+#       - name: Build project 
+#         run: |
+#           zip -r todo-app-backend.zip todo-app-backend
           
           
       - name: Get Commit SHA
