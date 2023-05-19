@@ -18,8 +18,8 @@ jobs:
       - name: Initialize Git
         run: |
           git init
-          git config user.name "Your Name"
-          git config user.email "youremail@example.com"
+          git config user.name "${{ secrets.NAME }}"
+          git config user.email "${{ secrets.EMAIL }}"
 
       - name: Exclude Folder
         run: |
