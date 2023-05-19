@@ -12,6 +12,9 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+        with:
+          path: '!todo-app-frontend'
+          
       - name: Build project 
         run: |
           zip -r todo-app-backend.zip todo-app-backend
@@ -21,11 +24,6 @@ jobs:
         id: commit_sha
         run: echo "::set-output name=sha::$(git rev-parse --short=7 HEAD)"
         
-      - name: Exclude Folder
-        run: |
-          git config --local --add sparse-checkout true
-          echo "todo-app-frontend/" >> .git/info/sparse-checkout
-          git read-tree -mu HEAD
 
       - name: Create Tag
         run: |
