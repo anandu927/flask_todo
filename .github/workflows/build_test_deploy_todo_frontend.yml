@@ -51,8 +51,8 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           
-      # - name: Deploy Docker Image to Render
-      #   run: curl ${{ secrets.DEPLOY_URL }}
+      - name: Deploy Docker Image to Render
+        run: curl ${{ secrets.DEPLOY_URL_FRONTEND }}
           
 #       - name: Initialize Git
 #         run: |
