@@ -24,11 +24,9 @@ jobs:
          docker build -t todo_app:latest .
          docker run --name todo_app -e ALLOWED_ORIGIN=http://localhost:3000 -d -p 5000:5000 todo_app:latest
          
-         sleep 200
-         curl -s -o /dev/null -w "%{http_code}" -H "Accept: application/json" --head http://localhost:5000/todos
-
-
-         bash todo-app-frontend/check-response.sh
+         sleep 10
+    
+         bash check-response.sh
 
          docker stop todo_app
      

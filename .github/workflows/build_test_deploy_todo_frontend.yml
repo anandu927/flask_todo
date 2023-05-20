@@ -19,13 +19,12 @@ jobs:
           
       - name: Build and test Docker image
         run: |
-         cd todo-app-backend/
+         cd todo-app-frontend/
 
          docker build -t todo_app_frontend:latest .
          docker run --name todo_app_frontend -d -p 3000:3000 todo_app_frontend
 
-         sleep 200
-         curl -s -o /dev/null -w "%{http_code}" -H "Accept: application/json" --head http://localhost:3000/
+         sleep 10
          
          bash check-response.sh
          docker stop todo_app_frontend
