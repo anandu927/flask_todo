@@ -18,11 +18,11 @@ jobs:
       - name: Build and test Docker image
         run: |
          cd todo-app-backend
-         docker build -t myapp:latest .
-         docker run --name myapp-test -e ALLOWED_ORIGIN=http://localhost:3000 -d -p 5000:5000 myapp:latest
+         docker build -t todo_backend:latest .
+         docker run --name todo_backend -e ALLOWED_ORIGIN=http://localhost:3000 -d -p 5000:5000 todo_backend:latest
          sleep 10
          curl -I localhost:5000/todos  
-         docker stop myapp-test
+         docker stop todo_backend
      
       - name: Log in to Docker Hub
         uses: docker/login-action@f4ef78c080cd8ba55a85445d5b36e214a81df20a
@@ -34,7 +34,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@9ec57ed1fcdbf14dcef7dfbe97b2010124a938b7
         with:
-          images: dockerwave21/todo_app
+          images: todo_backend
       
       - name: Build and push Docker image
         uses: docker/build-push-action@3b5e8027fcad23fda98b2e3ac259d8d67585f671
