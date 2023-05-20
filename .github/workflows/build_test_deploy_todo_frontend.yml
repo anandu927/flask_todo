@@ -1,11 +1,11 @@
-name: Build,Test And Deploy Todo Backend
+name: Build,Test And Deploy Todo Frontend
 
 on:
   push:
     branches:
       - main
     paths:
-      - 'todo-app-backend/**'
+      - 'todo-app-frontend/**'
 
 jobs:
   build:
@@ -21,8 +21,8 @@ jobs:
         run: |
          cd todo-app-backend/
 
-         docker build -t todo_app:latest .
-         docker run --name todo_app -e ALLOWED_ORIGIN=http://localhost:3000 -d -p 5000:5000 todo_app:latest
+         docker build -t todo_app_frontend:latest .
+         docker run --name todo_app_frontend -d -p 3000:3000 todo_app_frontend
          sleep 10
 
          #Testing
@@ -40,7 +40,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@9ec57ed1fcdbf14dcef7dfbe97b2010124a938b7
         with:
-          images: dockerwave21/todo_app
+          images: dockerwave21/todo_app_frontend
           tags: latest
       
       - name: Build and push Docker image

@@ -1,5 +1,9 @@
 FROM python:3.9
 
+# Create a non-root user
+RUN useradd -ms /bin/bash myuser
+USER myuser
+
 WORKDIR /app
 
 COPY requirements.txt .
