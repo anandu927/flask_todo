@@ -30,13 +30,19 @@ import os
 
 app = Flask(__name__)
 
-print('CORS Set to :', os.getenv("ALLOWED_ORIGIN"))
+allowed_origin = "http://localhost:8000"
+
+if(os.getenv("ALLOWED_ORIGIN") != None):
+  allowed_origin = os.getenv("ALLOWED_ORIGIN")
+
+
+print('CORS Set to :', allowed_origin)
 
 CORS(app,
 resources={
-    r"/todos": {"origins": os.getenv("ALLOWED_ORIGIN")},
-    r"/add": {"origins": os.getenv("ALLOWED_ORIGIN")},
-    r"/delete": {"origins": os.getenv("ALLOWED_ORIGIN")}
+    r"/todos": {"origins": allowed_origin},
+    r"/add": {"origins": allowed_origin},
+    r"/delete": {"origins": allowed_origin}
 })       
 
 todos = []
