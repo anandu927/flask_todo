@@ -1,6 +1,6 @@
 #!/bin/bash
 
-response=$(curl -s -w "%{http_code}" localhost:5000/todo)
+response=$(curl -s -w "%{http_code}" localhost:5000/todos)
 if [[ $response == "200" ]]; then
     echo "Request succeeded. Proceed with building the image."
 else
