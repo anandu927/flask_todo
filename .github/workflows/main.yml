@@ -19,7 +19,7 @@ jobs:
         run: |
          cd todo-app-backend
          docker build -t myapp:latest .
-         docker run --name myapp-test -d -p 5000:5000 myapp:latest
+         docker run --name myapp-test -e ALLOWED_ORIGIN=http://localhost:3000 -d -p 5000:5000 myapp:latest
          sleep 10
          curl -I localhost:5000/todos  
          docker stop myapp-test
