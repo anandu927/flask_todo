@@ -1,4 +1,4 @@
-name: Test and Build Docker Image
+name: Build,Test And Deploy Todo Backend
 
 on:
   push:
@@ -45,6 +45,9 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+          
+      - name: Deploy Docker Image to Render
+        run: curl ${{ secrets.DEPLOY_URL }}
           
 #       - name: Initialize Git
 #         run: |
