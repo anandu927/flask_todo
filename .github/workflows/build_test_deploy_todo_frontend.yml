@@ -23,18 +23,11 @@ jobs:
 
          docker build -t todo_app_frontend:latest .
          docker run --name todo_app_frontend -d -p 3000:3000 todo_app_frontend
-      
-      - name: Wait for frontend container to start
-        run: |
-          while [ "$(docker inspect -f '{{.State.Status}}' todo_app_frontend)" != "running" ]; do
-            sleep 1
-          done
 
-      - name: Perform Testing
-        run: |
-        
-         bash todo-app-frontend/check-response.sh
-         docker stop todo_app
+         curl -s -o /dev/null -w "%{http_code}" -H "Accept: application/json" --head http://localhost:3000/
+         
+         bash check-response.sh
+         docker stop todo_app_frontend
      
       - name: Log in to Docker Hub
         uses: docker/login-action@f4ef78c080cd8ba55a85445d5b36e214a81df20a
