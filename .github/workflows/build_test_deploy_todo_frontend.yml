@@ -24,6 +24,7 @@ jobs:
          docker build -t todo_app_frontend:latest .
          docker run --name todo_app_frontend -d -p 3000:3000 todo_app_frontend
 
+         sleep 200
          curl -s -o /dev/null -w "%{http_code}" -H "Accept: application/json" --head http://localhost:3000/
          
          bash check-response.sh
