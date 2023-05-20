@@ -14,28 +14,37 @@ jobs:
         uses: actions/checkout@v2
         with:
           fetch-depth: 0  # Fetch all history to enable tag creation
-
-      - name: Initialize Git
+          
+      - name: Build and test Docker image
         run: |
-          git init
-          git config user.name ${{ secrets.NAME }}
-          git config user.email ${{ secrets.EMAIL }}
+         cd todo-app-backend
+         docker build -t myapp:latest .
+         docker run --name myapp-test -d -p 5000:5000 myapp:latest
+         sleep 10
+         curl -I localhost:5000  # Replace with your API endpoint
+         docker stop myapp-test
 
-      - name: Exclude Folder
-        run: |
-          rm -rf todo-app-frontend/  
+#       - name: Initialize Git
+#         run: |
+#           git init
+#           git config user.name ${{ secrets.NAME }}
+#           git config user.email ${{ secrets.EMAIL }}
 
-      - name: Create Tag
-        run: |
-          git config user.name ${{ secrets.NAME }}
-          git config user.email ${{ secrets.EMAIL }}
-          git add -A
-          git commit -m "Exclude folder"
-          git tag -a v1.0.0 -m "Version 1.0.0"
-          git push --tags https://anandu927:${{ secrets.TOKEN }}@github.com/${{ github.repository }}.git
-          git push https://anandu927:${{ secrets.TOKEN }}@github.com/${{ github.repository }}.git
-        env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN }}
+#       - name: Exclude Folder
+#         run: |
+#           rm -rf todo-app-frontend/  
+
+#       - name: Create Tag
+#         run: |
+#           git config user.name ${{ secrets.NAME }}
+#           git config user.email ${{ secrets.EMAIL }}
+#           git add -A
+#           git commit -m "Exclude folder"
+#           git tag -a v1.0.0 -m "Version 1.0.0"
+#           git push --tags https://anandu927:${{ secrets.TOKEN }}@github.com/${{ github.repository }}.git
+#           git push https://anandu927:${{ secrets.TOKEN }}@github.com/${{ github.repository }}.git
+#         env:
+#           GITHUB_TOKEN: ${{ secrets.TOKEN }}
           
 #       - name: Checkout code
 #         uses: actions/checkout@v2
