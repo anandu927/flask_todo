@@ -33,7 +33,7 @@ jobs:
       - name: Perform Testing
         run: |
          
-         bash check-response.sh
+         bash todo-app-frontend/check-response.sh
          docker stop todo_app
      
       - name: Log in to Docker Hub
