@@ -89,7 +89,9 @@ docker run -p 3000:3000 todo_app_frontend
 
 The Todo App has the following dependencies:
 
+- Docker: To Build the systems
 - Flask: A Python web framework used for developing the server-side component.
+- React: A node framework for frontend
 
 ## Contributing
 
