@@ -39,8 +39,7 @@ function App() {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({ todo })
-    })
-      .then(() => {
+    }).then(() => {
         const updatedTodos = todos.filter(item => item !== todo);
         setTodos(updatedTodos);
       });

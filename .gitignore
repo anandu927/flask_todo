@@ -21,3 +21,6 @@ todo-app-frontend/.env.production.local
 todo-app-frontend/npm-debug.log*
 todo-app-frontend/yarn-debug.log*
 todo-app-frontend/yarn-error.log*
+
+#python
+todo-app-backend/env

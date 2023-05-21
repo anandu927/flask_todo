@@ -25,6 +25,9 @@ RUN npm ci --quiet --production
 # Copy the rest of the app's source code
 COPY . .
 
+#Unit Test
+RUN CI=true npm test
+
 # Build the app
 RUN npm run build
 
