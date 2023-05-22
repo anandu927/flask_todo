@@ -42,7 +42,7 @@ stages:
               repository: 'todo_app_frontend'
               command: 'push'
               Dockerfile: '$(Build.SourcesDirectory)/todo-app-backend/Dockerfile'
-              tags: 'latest'
+              tags: 'latest_2'
 
           - task: Bash@3
             displayName: 'Deploy Docker Image to Render'
