@@ -24,8 +24,8 @@ stages:
               script: |
                 cd $(Build.SourcesDirectory)/todo-app-backend/
 
-                docker build -t todo_app:latest .
-                docker run --name todo_app -e ALLOWED_ORIGIN=http://localhost:3000 -d -p 5000:5000 todo_app:latest
+                docker build -t todo_app:latest_2 .
+                docker run --name todo_app -e ALLOWED_ORIGIN=http://localhost:3000 -d -p 5000:5000 todo_app:latest_2
                 
                 sleep 10
     
