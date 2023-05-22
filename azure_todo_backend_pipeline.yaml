@@ -25,13 +25,13 @@ stages:
                 cd $(Build.SourcesDirectory)/todo-app-backend/
 
                 docker build -t dockerwave21/todo_app:latest .
-                docker run --name dockerwave21/todo_app -e ALLOWED_ORIGIN=http://localhost:3000 -d -p 5000:5000 dockerwave21/todo_app:latest
+                docker run --name todo_app -e ALLOWED_ORIGIN=http://localhost:3000 -d -p 5000:5000 dockerwave21/todo_app:latest
                 
                 sleep 10
     
                 bash check-response.sh || exit 1
 
-                docker stop dockerwave21/todo_app
+                docker stop todo_app
 
           - task: Docker@2
             displayName: 'Push Docker image'
