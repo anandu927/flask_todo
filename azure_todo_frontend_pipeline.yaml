@@ -26,8 +26,8 @@ stages:
                 
                 cd $(Build.SourcesDirectory)/todo-app-frontend/
 
-                docker build -t todo_app_frontend:latest .
-                docker run --name todo_app_frontend -d -p 3000:3000 todo_app_frontend
+                docker build -t dockerwave21/todo_app_frontend:latest .
+                docker run --name todo_app_frontend -d -p 3000:3000 dockerwave21/todo_app_frontend
 
                 sleep 10
          
@@ -38,11 +38,13 @@ stages:
             displayName: 'Push Docker image'
             inputs:
               containerRegistry: 'DockerHub'
-              repository: 'todo_app_frontend'
-              Dockerfile: '$(Build.SourcesDirectory)/todo-app-backend/Dockerfile'
+              repository: 'dockerwave21/todo_app_frontend'
+              Dockerfile: '$(Build.SourcesDirectory)/todo-app-frontend/Dockerfile'
               tags: 'latest'
-              command: 'buildAndPush'
-              # arguments: '--build-arg DOCKERHUB_TOKEN=$(DOCKERHUB_TOKEN)'
+              command: 'push'
+              containerRegistryType: 'Container Registry'
+              dockerRegistryEndpoint: 'DockerHub'
+
 
           - task: Bash@3
             displayName: 'Deploy Docker Image to Render'
