@@ -25,7 +25,7 @@ This GitHub workflow is triggered on each push to the `main` branch and when cha
 2. Builds and tests the Docker image for the backend.
 3. Deploys the Docker image to Render, a cloud platform for hosting web applications.
 
-For more details, refer to the [GitHub Workflow file](./.github/workflows/build_test_deploy_todo_backend.yml) for the backend.
+For more details, refer to the [GitHub Workflow file](./.github/workflows/build_test_deploy_todo_backend.yml) or [Azure Pipeline file](./azure_todo_backend_pipeline.yaml) for the backend.
 
 ## Frontend Workflow: Build, Test, and Deploy Todo Frontend
 
@@ -35,7 +35,7 @@ This GitHub workflow is triggered on each push to the `main` branch and when cha
 2. Builds and tests the Docker image for the frontend.
 3. Deploys the Docker image to Render.
 
-For more details, refer to the [GitHub Workflow file](./.github/workflows/build_test_deploy_todo_frontend.yml) for the frontend.
+For more details, refer to the [GitHub Workflow file](./.github/workflows/build_test_deploy_todo_frontend.yml) or [Azure Pipeline file](./azure_todo_frontend_pipeline.yaml) for the frontend.
 
 
 ## Getting Started
