@@ -37,6 +37,10 @@ This GitHub workflow is triggered on each push to the `main` branch and when cha
 
 For more details, refer to the [GitHub Workflow file](./.github/workflows/build_test_deploy_todo_frontend.yml) or [Azure Pipeline file](./azure_todo_frontend_pipeline.yaml) for the frontend.
 
+## Improvements/TODO 
+
+1. In local testing, have nginx as proxy
+2. Create tags when a new release of docker image is created
 
 ## Getting Started
 
