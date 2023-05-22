@@ -24,8 +24,8 @@ stages:
               script: |
                 cd $(Build.SourcesDirectory)/todo-app-backend/
 
-                docker build -t todo_app:latest_2 .
-                docker run --name todo_app -e ALLOWED_ORIGIN=http://localhost:3000 -d -p 5000:5000 todo_app:latest_2
+                docker build -t todo_app:latest .
+                docker run --name todo_app -e ALLOWED_ORIGIN=http://localhost:3000 -d -p 5000:5000 todo_app:latest
                 
                 sleep 10
     
@@ -41,7 +41,8 @@ stages:
               repository: 'todo_app'
               command: 'push'
               Dockerfile: '$(Build.SourcesDirectory)/todo-app-backend/Dockerfile'
-              tags: 'latest_2'
+              tags: 'latest'
+              arguments: '--build-arg DOCKERHUB_TOKEN=$(DOCKERHUB_TOKEN)'
 
           - task: Bash@3
             displayName: 'Deploy Docker Image to Render'
