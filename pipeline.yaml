@@ -3,6 +3,10 @@ trigger:
     include:
       - main
 
+
+pool:
+  name: Default
+  
 variables:
   imageName: 'dockerwave21/todo_app'
   imageVersion: $(version) 
