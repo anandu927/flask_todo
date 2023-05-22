@@ -37,11 +37,13 @@ stages:
             displayName: 'Push Docker image'
             inputs:
               containerRegistry: 'DockerHub'
-              repository: 'todo_app'
-              command: 'buildAndPush'
+              repository: 'dockerwave21/todo_app'
+              command: 'push'
               Dockerfile: '$(Build.SourcesDirectory)/todo-app-backend/Dockerfile'
               tags: 'latest'
-              arguments: '--build-arg DOCKERHUB_TOKEN=$(DOCKERHUB_TOKEN)'
+              containerRegistryType: 'Container Registry'
+              dockerRegistryEndpoint: 'DockerHub'
+              # arguments: '--build-arg DOCKERHUB_TOKEN=$(DOCKERHUB_TOKEN)'
 
           - task: Bash@3
             displayName: 'Deploy Docker Image to Render'

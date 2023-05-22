@@ -42,7 +42,7 @@ stages:
               Dockerfile: '$(Build.SourcesDirectory)/todo-app-backend/Dockerfile'
               tags: 'latest'
               command: 'buildAndPush'
-              arguments: '--build-arg DOCKERHUB_TOKEN=$(DOCKERHUB_TOKEN)'
+              # arguments: '--build-arg DOCKERHUB_TOKEN=$(DOCKERHUB_TOKEN)'
 
           - task: Bash@3
             displayName: 'Deploy Docker Image to Render'
