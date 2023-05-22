@@ -85,6 +85,22 @@ docker run -p 3000:3000 todo_app_frontend
 
 5. Open a web browser and go to `http://localhost:3000` to access the Todo App Frontend.
 
+Local Testing ( Both Apps in one container )
+
+1. For testing locally both application in same docker container
+
+cd local_testing
+
+2. Build docker image
+
+docker build -t todo_app .
+
+3. Open 3000 and 5000 ports in run of docker
+
+docker run --name myapp-test -p 3000:3000 -p 5000:5000 todo_app
+
+4. Open a web browser and go to `http://localhost:3000` to access the Todo App.
+
 ## Dependencies
 
 The Todo App has the following dependencies:
