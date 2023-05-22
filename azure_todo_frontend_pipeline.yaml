@@ -31,18 +31,18 @@ stages:
 
                 sleep 10
          
-                bash check-response.sh
+                bash check-response.sh || exit 1
                 docker stop todo_app_frontend
 
           - task: Docker@2
             displayName: 'Push Docker image'
             inputs:
-              dockerRegistryEndpoint: 'DockerHub'
               containerRegistry: 'DockerHub'
               repository: 'todo_app_frontend'
-              command: 'push'
               Dockerfile: '$(Build.SourcesDirectory)/todo-app-backend/Dockerfile'
-              tags: 'latest_2'
+              tags: 'latest'
+              command: 'buildAndPush'
+              arguments: '--build-arg DOCKERHUB_TOKEN=$(DOCKERHUB_TOKEN)'
 
           - task: Bash@3
             displayName: 'Deploy Docker Image to Render'
