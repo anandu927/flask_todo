@@ -24,14 +24,14 @@ stages:
               script: |
                 cd $(Build.SourcesDirectory)/todo-app-backend/
 
-                docker build -t todo_app:latest .
-                docker run --name todo_app -e ALLOWED_ORIGIN=http://localhost:3000 -d -p 5000:5000 todo_app:latest
+                docker build -t dockerwave21/todo_app:latest .
+                docker run --name dockerwave21/todo_app -e ALLOWED_ORIGIN=http://localhost:3000 -d -p 5000:5000 dockerwave21/todo_app:latest
                 
                 sleep 10
     
                 bash check-response.sh || exit 1
 
-                docker stop todo_app
+                docker stop dockerwave21/todo_app
 
           - task: Docker@2
             displayName: 'Push Docker image'
@@ -43,7 +43,6 @@ stages:
               tags: 'latest'
               containerRegistryType: 'Container Registry'
               dockerRegistryEndpoint: 'DockerHub'
-              # arguments: '--build-arg DOCKERHUB_TOKEN=$(DOCKERHUB_TOKEN)'
 
           - task: Bash@3
             displayName: 'Deploy Docker Image to Render'
