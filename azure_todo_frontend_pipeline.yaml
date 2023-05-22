@@ -44,8 +44,10 @@ stages:
 
           - task: Bash@3
             displayName: 'Deploy Docker Image to Render'
-            script: |
-              curl $(DEPLOY_URL)
+            inputs:
+              targetType: 'inline'
+              script: |
+                curl $(DEPLOY_URL)
               
 
 
