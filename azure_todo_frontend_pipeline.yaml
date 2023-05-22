@@ -17,21 +17,22 @@ stages:
         steps:
           - checkout: self
 
-          - task: Docker@2
-            displayName: 'Build and test Docker image'
-            inputs:
-              containerRegistry: 'DockerHub'
-              repository: 'todo_app_frontend'
-              command: 'build'
-              Dockerfile: '$(Build.SourcesDirectory)/todo-app-frontend/Dockerfile'
 
           - task: Bash@3
-            displayName: 'Run check-response.sh'
+            displayName: 'Build and test Docker image'
             inputs:
               targetType: 'inline'
               script: |
+                
                 cd $(Build.SourcesDirectory)/todo-app-frontend/
+
+                docker build -t todo_app_frontend:latest .
+                docker run --name todo_app_frontend -d -p 3000:3000 todo_app_frontend
+
+                sleep 10
+         
                 bash check-response.sh
+                docker stop todo_app_frontend
 
           - task: Docker@2
             displayName: 'Push Docker image'
