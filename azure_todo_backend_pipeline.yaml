@@ -23,7 +23,7 @@ stages:
               targetType: 'inline'
               script: |
                 cd $(Build.SourcesDirectory)/todo-app-backend/
-                
+
                 docker build -t todo_app:latest .
                 docker run --name todo_app -e ALLOWED_ORIGIN=http://localhost:3000 -d -p 5000:5000 todo_app:latest
                 
@@ -36,6 +36,7 @@ stages:
           - task: Docker@2
             displayName: 'Push Docker image'
             inputs:
+              dockerRegistryEndpoint: 'DockerHub'
               containerRegistry: 'DockerHub'
               repository: 'todo_app'
               command: 'push'
