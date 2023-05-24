@@ -59,7 +59,7 @@ RUN npm run build
 EXPOSE 3000
 
 # Expose the flask's port
-EXPOSE 3000
+EXPOSE 5000
 
 # Copy entrypoint script
 COPY entrypoint.sh /app
